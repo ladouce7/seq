@@ -22,9 +22,8 @@ seed_t seed_base[6] = {
     { 0, {} },  /* actually { 1, { 0 } }, but we never need it */
     { 0, {} },  /* actually { 2, { 1, 2 } }, but we never need it */
     { 2, { 0210, 0050 } },
-    { 2, { 0250, 0260 } },
-    { 1, { 0252 } },
-    { 1, { 0262 } }
+    { 2, { 0250 } },
+    { 1, { 0252 } }
 };
 
 void init_group(void) {
