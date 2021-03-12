@@ -5,7 +5,7 @@
 #include "group.h"
 #include "sym.h"
 
-grouplist_t *cache_seed[9];
+grouplist_t *cache_seed[5];
 typedef struct seed_s {
     int count;
     int bits[13];  /* max needed */
@@ -18,7 +18,7 @@ typedef struct seed_s {
  * relative to the centre. Seed bits for k are the complement of those
  * for (8 - k).
  */
-seed_t seed_base[9] = {
+seed_t seed_base[5] = {
     { 0, {} },  /* actually { 1, { 0 } }, but we never need it */
     { 0, {} },  /* actually { 2, { 1, 2 } }, but we never need it */
     { 2, { 0210, 0050 } },
@@ -31,7 +31,7 @@ void init_group(void) {
 }
 
 void finish_group(void) {
-    for (int i = 0; i <= 8; ++i)
+    for (int i = 0; i <= 4; ++i)
         if (cache_seed[i])
             free_grouplist(cache_seed[i]);
 }
@@ -274,7 +274,7 @@ group_t *group_seedbits(int k, int bits) {
  * The grouplist is cached, and freed via finish_group().
  */
 grouplist_t *group_seed(int k) {
-    if (k < 2 || k > 8) {
+    if (k < 2 || k > 4) {
         fprintf(stderr, "Error: group_seed(%d) called\n", k);
         exit(1);
     }
